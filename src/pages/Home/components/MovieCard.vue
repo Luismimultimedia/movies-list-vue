@@ -25,6 +25,10 @@ const setRating = (movieId, rating) => {
 <template>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
         <article class="movie-card__container" v-for="movie in mappedMovies">
+            <div class="movie-card__super-star">
+                <StarIcon class="movie-card__super-star--icon text-yellow-500" />
+                <p class="movie-card__super-star--text text-gray-500">{{ movie.rating }}</p>
+            </div>
             <picture class="movie-card__media">
                 <img :src="movie?.image" />
             </picture>
@@ -57,6 +61,32 @@ const setRating = (movieId, rating) => {
         width: 100%;
         border-radius: 4px;
         background-color: white;
+        position: relative;
+    }
+
+    &__super-star {
+        position: absolute;
+        fill: rgb(197, 172, 58);
+        top: 25px;
+        right: 25px;
+        font-size: 1rem;
+        &--text,
+        &--icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50px;
+            width: 50px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        &--text {
+            font-weight: bold;
+            color: aliceblue;
+            transform: translate(-50%, -25%);
+        }
     }
 
     &__media {
